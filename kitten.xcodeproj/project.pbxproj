@@ -94,6 +94,8 @@
 		0D3B3F181BD8D03F00F7B119 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D3B3F1B1BD8D35400F7B119 /* today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = today.entitlements; sourceTree = "<group>"; };
 		0D3B3F1C1BD8D37A00F7B119 /* kitten.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = kitten.entitlements; sourceTree = "<group>"; };
+		0D4D90FE1BD8E2CF00A2DEAA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		0D4D90FF1BD8E2CF00A2DEAA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		38F49FEAD0F66F8FA73B7E1E /* libPods-today.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-today.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6245816F06A390CD3273C7EE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6BE641EAFAD8C760BBB68D6F /* KTPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPref.h; sourceTree = "<group>"; };
@@ -148,6 +150,8 @@
 		0D3B3EC21BD8CC7300F7B119 = {
 			isa = PBXGroup;
 			children = (
+				0D4D90FE1BD8E2CF00A2DEAA /* Fabric.framework */,
+				0D4D90FF1BD8E2CF00A2DEAA /* Crashlytics.framework */,
 				0D3B3ECD1BD8CC7300F7B119 /* kitten */,
 				0D3B3EE71BD8CC7300F7B119 /* kittenTests */,
 				0D3B3EF21BD8CC7300F7B119 /* kittenUITests */,
@@ -283,6 +287,7 @@
 				0D3B3F171BD8CCDA00F7B119 /* Embed App Extensions */,
 				C2EACBFFE35828872083A6E1 /* Embed Pods Frameworks */,
 				E1F82F27CFB9B5AEC8AC957F /* Copy Pods Resources */,
+				0D4D90FD1BD8E2B800A2DEAA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -444,6 +449,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0D4D90FD1BD8E2B800A2DEAA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 15fcb81ecf074f196df449e915ceae80d7a308be e6c3e9c345dd7256d5af51e16f83864fc02469bd4f304564821357e547e9747c";
+		};
 		33CD5F6D46462E61D79000F6 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -712,12 +730,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = kitten/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ede0f100-a70e-4cd9-8a67-493bf7abe2c1";
 			};
 			name = Debug;
 		};
@@ -730,6 +752,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = kitten/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -795,11 +821,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = today/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d5d11d5c-4596-446d-9c54-1697ed90e7fd";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -812,6 +842,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = today/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten.today;
@@ -864,15 +898,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = kitten/kitten.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHIEN SHUO HUANG (WRL6633XG9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHIEN SHUO HUANG (WRL6633XG9)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = kitten/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a997549d-9f9e-4649-af1b-b01dc922dd0e";
 			};
 			name = Testflight;
 		};
@@ -905,14 +943,18 @@
 			baseConfigurationReference = A8D45C10801B6ABEB5E6A7B6 /* Pods-today.testflight.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = today/today.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHIEN SHUO HUANG (WRL6633XG9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHIEN SHUO HUANG (WRL6633XG9)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = today/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1726c0a1-1edf-46a4-b3f4-b334b9ac8591";
 				SKIP_INSTALL = YES;
 			};
 			name = Testflight;
