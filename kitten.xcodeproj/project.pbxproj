@@ -102,8 +102,10 @@
 		6BE649AD6B37D22E606C05EB /* KTPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPref.m; sourceTree = "<group>"; };
 		74AF860103A7DE704A99A48F /* libPods-kitten.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kitten.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AEDE360CB66E4442B56EDFC /* Pods-today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-today.release.xcconfig"; path = "Pods/Target Support Files/Pods-today/Pods-today.release.xcconfig"; sourceTree = "<group>"; };
+		A8D45C10801B6ABEB5E6A7B6 /* Pods-today.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-today.testflight.xcconfig"; path = "Pods/Target Support Files/Pods-today/Pods-today.testflight.xcconfig"; sourceTree = "<group>"; };
 		B1C25B1A5CE9C96706E75414 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50880CDA8EC7C0E269F077C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D4FA25655F25EE8E96CBB42D /* Pods.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.testflight.xcconfig; path = "Pods/Target Support Files/Pods/Pods.testflight.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,8 @@
 				B50880CDA8EC7C0E269F077C /* Pods.release.xcconfig */,
 				09DCE42BC1AF25C4C3023552 /* Pods-today.debug.xcconfig */,
 				9AEDE360CB66E4442B56EDFC /* Pods-today.release.xcconfig */,
+				D4FA25655F25EE8E96CBB42D /* Pods.testflight.xcconfig */,
+				A8D45C10801B6ABEB5E6A7B6 /* Pods-today.testflight.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -817,6 +821,102 @@
 			};
 			name = Release;
 		};
+		0D3B3F1D1BD8DBD000F7B119 /* Testflight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Testflight;
+		};
+		0D3B3F1E1BD8DBD000F7B119 /* Testflight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4FA25655F25EE8E96CBB42D /* Pods.testflight.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = kitten/kitten.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = kitten/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Testflight;
+		};
+		0D3B3F1F1BD8DBD000F7B119 /* Testflight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = kittenTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kittenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kitten.app/kitten";
+			};
+			name = Testflight;
+		};
+		0D3B3F201BD8DBD000F7B119 /* Testflight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = kittenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kittenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = kitten;
+				USES_XCTRUNNER = YES;
+			};
+			name = Testflight;
+		};
+		0D3B3F211BD8DBD000F7B119 /* Testflight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8D45C10801B6ABEB5E6A7B6 /* Pods-today.testflight.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = today/today.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = today/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten.today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Testflight;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -825,6 +925,7 @@
 			buildConfigurations = (
 				0D3B3EF61BD8CC7300F7B119 /* Debug */,
 				0D3B3EF71BD8CC7300F7B119 /* Release */,
+				0D3B3F1D1BD8DBD000F7B119 /* Testflight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -834,6 +935,7 @@
 			buildConfigurations = (
 				0D3B3EF91BD8CC7300F7B119 /* Debug */,
 				0D3B3EFA1BD8CC7300F7B119 /* Release */,
+				0D3B3F1E1BD8DBD000F7B119 /* Testflight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -843,6 +945,7 @@
 			buildConfigurations = (
 				0D3B3EFC1BD8CC7300F7B119 /* Debug */,
 				0D3B3EFD1BD8CC7300F7B119 /* Release */,
+				0D3B3F1F1BD8DBD000F7B119 /* Testflight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -852,6 +955,7 @@
 			buildConfigurations = (
 				0D3B3EFF1BD8CC7300F7B119 /* Debug */,
 				0D3B3F001BD8CC7300F7B119 /* Release */,
+				0D3B3F201BD8DBD000F7B119 /* Testflight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -861,6 +965,7 @@
 			buildConfigurations = (
 				0D3B3F151BD8CCDA00F7B119 /* Debug */,
 				0D3B3F161BD8CCDA00F7B119 /* Release */,
+				0D3B3F211BD8DBD000F7B119 /* Testflight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
