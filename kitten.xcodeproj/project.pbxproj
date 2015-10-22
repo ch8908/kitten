@@ -286,8 +286,9 @@
 				0D3B3EC91BD8CC7300F7B119 /* Resources */,
 				0D3B3F171BD8CCDA00F7B119 /* Embed App Extensions */,
 				E1F82F27CFB9B5AEC8AC957F /* Copy Pods Resources */,
-				0D4D90FD1BD8E2B800A2DEAA /* ShellScript */,
 				932718BFD7BF1E17FBD4EE21 /* Embed Pods Frameworks */,
+				0D4D90FD1BD8E2B800A2DEAA /* ShellScript */,
+				1930007A1BD9487600313C26 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -461,6 +462,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 15fcb81ecf074f196df449e915ceae80d7a308be e6c3e9c345dd7256d5af51e16f83864fc02469bd4f304564821357e547e9747c";
+		};
+		1930007A1BD9487600313C26 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nconf=${CONFIGURATION}\narch=${ARCHS:0:4}\necho $conf $arch\n# Only increase the build number on Device and AdHoc/AppStore build\nif [ $conf != \"Debug\" ] && [ $arch != \"i386\" ]\nthen\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\noldBuildNumber=$(($buildNumber))\nproductVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\nmajor_minor=$(echo $productVersion | awk '{split($0,s,\".\"); print s[1] \".\" s[2] }')\nagvtool next-version -all\nbuildNumber=$(($buildNumber + 1))\nagvtool new-marketing-version \"$major_minor.$buildNumber\"\necho New Build Number:$buildNumber Version:$major_minor.$buildNumber\n\nif [ $conf == \"Release\" ]\nthen\ngit tag -a kitten-$major_minor.$oldBuildNumber -m 'app store release '$oldBuildNumber\nfi\nfi";
 		};
 		33CD5F6D46462E61D79000F6 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -729,6 +743,7 @@
 				CODE_SIGN_ENTITLEMENTS = kitten/kitten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -740,6 +755,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ede0f100-a70e-4cd9-8a67-493bf7abe2c1";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -751,6 +767,7 @@
 				CODE_SIGN_ENTITLEMENTS = kitten/kitten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -762,6 +779,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -820,6 +838,7 @@
 				CODE_SIGN_ENTITLEMENTS = today/today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -832,6 +851,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d5d11d5c-4596-446d-9c54-1697ed90e7fd";
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -842,6 +862,7 @@
 				CODE_SIGN_ENTITLEMENTS = today/today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -854,6 +875,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -902,6 +924,7 @@
 				CODE_SIGN_ENTITLEMENTS = kitten/kitten.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CHIEN SHUO HUANG (WRL6633XG9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHIEN SHUO HUANG (WRL6633XG9)";
+				CURRENT_PROJECT_VERSION = 7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -913,6 +936,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "022a3373-7b21-456f-a3e1-3ba826603413";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Testflight;
 		};
@@ -947,6 +971,7 @@
 				CODE_SIGN_ENTITLEMENTS = today/today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CHIEN SHUO HUANG (WRL6633XG9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHIEN SHUO HUANG (WRL6633XG9)";
+				CURRENT_PROJECT_VERSION = 7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -959,6 +984,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2bf55fac-89dd-49db-9e46-9ef50d385397";
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Testflight;
 		};
