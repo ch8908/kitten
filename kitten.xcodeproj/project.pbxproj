@@ -285,9 +285,9 @@
 				0D3B3EC81BD8CC7300F7B119 /* Frameworks */,
 				0D3B3EC91BD8CC7300F7B119 /* Resources */,
 				0D3B3F171BD8CCDA00F7B119 /* Embed App Extensions */,
-				C2EACBFFE35828872083A6E1 /* Embed Pods Frameworks */,
 				E1F82F27CFB9B5AEC8AC957F /* Copy Pods Resources */,
 				0D4D90FD1BD8E2B800A2DEAA /* ShellScript */,
+				932718BFD7BF1E17FBD4EE21 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -343,8 +343,8 @@
 				0D3B3F011BD8CCDA00F7B119 /* Sources */,
 				0D3B3F021BD8CCDA00F7B119 /* Frameworks */,
 				0D3B3F031BD8CCDA00F7B119 /* Resources */,
-				34B877965BD5808D68E0BA27 /* Embed Pods Frameworks */,
 				9B52DEC5C7F3810939F4C3DF /* Copy Pods Resources */,
+				33D89EE11162950A630D12A1 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -477,7 +477,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		34B877965BD5808D68E0BA27 /* Embed Pods Frameworks */ = {
+		33D89EE11162950A630D12A1 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -507,6 +507,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		932718BFD7BF1E17FBD4EE21 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9B52DEC5C7F3810939F4C3DF /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,21 +535,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-today/Pods-today-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C2EACBFFE35828872083A6E1 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E1F82F27CFB9B5AEC8AC957F /* Copy Pods Resources */ = {
@@ -912,7 +912,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a997549d-9f9e-4649-af1b-b01dc922dd0e";
+				PROVISIONING_PROFILE = "022a3373-7b21-456f-a3e1-3ba826603413";
 			};
 			name = Testflight;
 		};
@@ -957,7 +957,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.osolve.kitten.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1726c0a1-1edf-46a4-b3f4-b334b9ac8591";
+				PROVISIONING_PROFILE = "2bf55fac-89dd-49db-9e46-9ef50d385397";
 				SKIP_INSTALL = YES;
 			};
 			name = Testflight;
