@@ -14,6 +14,7 @@
 @interface TodayViewController()<NCWidgetProviding>
 
 @property (nonatomic, strong) UIImageView *photoImageView;
+@property (nonatomic, strong) UIImage *cachedImage;
 @end
 
 @implementation TodayViewController
@@ -48,16 +49,16 @@
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
 
-    self.photoImageView.image = [self loadImage];
+    __weak typeof(self) weakSelf = self;
+    [[KTPref instance] loadImageWithCompletion:^(UIImage *image) {
+        weakSelf.photoImageView.image = image;
+        completionHandler(NCUpdateResultNewData);
+    }];
     completionHandler(NCUpdateResultNewData);
 }
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets) defaultMarginInsets {
     return UIEdgeInsetsMake(0, 0, 0, 0);
-}
-
-- (UIImage *)loadImage {
-    return [[KTPref instance] loadImage];
 }
 
 @end

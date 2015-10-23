@@ -39,9 +39,15 @@ NSString *const PHOTO_PREF_KEY = @"PHOTO_PREF_KEY";
     [self.mySharedDefaults synchronize];
 }
 
-- (UIImage *)loadImage {
-    NSData *imageData = [self.mySharedDefaults objectForKey:PHOTO_PREF_KEY];
-    return [UIImage imageWithData:imageData];
+- (void)loadImageWithCompletion:(void (^)(UIImage *)) completion {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        NSData *imageData = [self.mySharedDefaults objectForKey:PHOTO_PREF_KEY];
+        UIImage *image = [UIImage imageWithData:imageData];
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if (completion) {
+                completion(image);
+            }
+        });
+    });
 }
-
 @end

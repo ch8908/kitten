@@ -11,5 +11,5 @@
 
 - (void)saveImage:(UIImage *) image;
 
-- (UIImage *)loadImage;
+- (void)loadImageWithCompletion:(void (^)(UIImage *)) completion;
 @end
