@@ -20,7 +20,7 @@
 
 - (void)loadView {
     [super loadView];
-    self.preferredContentSize = CGSizeMake(0, 200);
+    self.preferredContentSize = CGSizeMake(0, CGRectGetWidth(self.view.frame) * 9 / 16);
 
     UIImageView *photoImageView = [[UIImageView alloc] init];
     photoImageView.contentMode = UIViewContentModeScaleAspectFit;
