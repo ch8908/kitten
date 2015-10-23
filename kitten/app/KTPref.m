@@ -50,4 +50,10 @@ NSString *const PHOTO_PREF_KEY = @"PHOTO_PREF_KEY";
         });
     });
 }
+
+- (UIImage *)loadImage {
+    NSData *imageData = [self.mySharedDefaults objectForKey:PHOTO_PREF_KEY];
+    return [UIImage imageWithData:imageData];
+}
+
 @end

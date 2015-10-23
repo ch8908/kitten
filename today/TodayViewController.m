@@ -9,12 +9,9 @@
 #import "TodayViewController.h"
 #import "KTPref.h"
 #import <NotificationCenter/NotificationCenter.h>
-#import <Masonry/View+MASAdditions.h>
 
 @interface TodayViewController()<NCWidgetProviding>
-
-@property (nonatomic, strong) UIImageView *photoImageView;
-@property (nonatomic, strong) UIImage *cachedImage;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView2;
 @end
 
 @implementation TodayViewController
@@ -22,19 +19,21 @@
 - (void)loadView {
     [super loadView];
     self.preferredContentSize = CGSizeMake(0, CGRectGetWidth(self.view.frame) * 9 / 16);
-
-    UIImageView *photoImageView = [[UIImageView alloc] init];
-    photoImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:photoImageView];
-    [photoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(8, 8, 8, 8));
-    }];
-    self.photoImageView = photoImageView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIImage *image = [[KTPref instance] loadImage];
+    self.imageView2.image = [self resizeImage:image size:image.size];
+}
+
+- (UIImage *)resizeImage:(UIImage *) theImage size:(CGSize) theNewSize {
+    UIGraphicsBeginImageContextWithOptions(theNewSize, NO, 1.0);
+    [theImage drawInRect:CGRectMake(0, 0, theNewSize.width, theNewSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,11 +48,6 @@
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
 
-    __weak typeof(self) weakSelf = self;
-    [[KTPref instance] loadImageWithCompletion:^(UIImage *image) {
-        weakSelf.photoImageView.image = image;
-        completionHandler(NCUpdateResultNewData);
-    }];
     completionHandler(NCUpdateResultNewData);
 }
 
